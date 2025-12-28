@@ -4,9 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminMainController;
 use App\Http\Controllers\home\HomeMainController;
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+use App\Http\Controllers\CategoryController;
 
 //home
 Route::controller(HomeMainController::class)->group(function () {
@@ -37,10 +35,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified','rolemanager:user'])->name('dashboard');
 //admin
 Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
+     Route::prefix('admin')->group(function () {
+
     Route::controller(AdminMainController::class)->group(function () {
-    Route::prefix('admin')->group(function () {
     Route::get('/dashboard', 'index')->name('admin.dashboard'); 
 });
+
+ Route::controller(CategoryController::class)->group(function () {
+    Route::get('/category/create', 'create')->name('admin.category.create'); 
+Route::post('/category/store', 'store')->name('admin.category.store');
+
+});
+
 
 });
  });
