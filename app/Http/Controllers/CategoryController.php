@@ -12,7 +12,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-      //   
+    
+    $categories = Category::latest()->paginate(10);
+    return view('admin.category.manage', compact('categories'));
+
     }
 
     /**
@@ -51,9 +54,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+         $category = Category::findOrFail($id);
+       return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -61,7 +65,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+         
+      
+$category->update([
+    'name' => $request->name,
+    'status' => $request->status,
+]);
+
+        return redirect()->route('admin.category.index')
+            ->with('success', 'Category updated successfully');
+   
     }
 
     /**
@@ -69,6 +82,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->back()
+            ->with('success', 'Category deleted successfully');
+  
     }
 }

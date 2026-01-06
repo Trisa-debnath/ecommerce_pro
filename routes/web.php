@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\AdminMainController;
 use App\Http\Controllers\home\HomeMainController;
 use App\Http\Controllers\CategoryController;
 
+use App\Http\Controllers\admin\ProductController;
+
 //home
 Route::controller(HomeMainController::class)->group(function () {
    Route::get('/', 'index')->name('home.index'); 
@@ -42,10 +44,28 @@ Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
 });
 
  Route::controller(CategoryController::class)->group(function () {
-    Route::get('/category/create', 'create')->name('admin.category.create'); 
+    Route::get('/category/create','create')->name('admin.category.create'); 
 Route::post('/category/store', 'store')->name('admin.category.store');
+    Route::get('/category','index')->name('admin.category.manage');
+ Route::get('/category/{id}/edit','edit')->name('admin.category.edit');
+    Route::post('/category/{id}/update','update')->name('admin.category.update');
+    Route::delete('/category/{id}','destroy')->name('admin.category.delete');
 
 });
+
+Route::controller(ProductController::class)->group(function () {
+Route::get('/get-subcategories/{id}', 'getSubcategories');
+
+    Route::get('/product/create','create')->name('admin.product.create'); 
+Route::post('/product/store', 'store')->name('admin.product.store');
+    Route::get('/product','index')->name('admin.product.manage');
+ Route::get('/product/{id}/edit','edit')->name('admin.product.edit');
+    Route::post('/product/{id}/update','update')->name('admin.product.update');
+    Route::delete('/product/{id}','destroy')->name('admin.product.delete');
+
+});
+
+
 
 
 });

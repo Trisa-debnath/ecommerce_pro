@@ -9,7 +9,11 @@
                 <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> Category</span><i class="icon-arrow-down"></i></a>
                       <ul class="treeview-menu">
                         <li><a class="waves-effect waves-dark" href="{{ route('admin.category.create') }}"><i class="icon-arrow-right"></i>Add category</a></li>
-                        
+                         <li>
+            <a href="{{ route('admin.category.manage') }}">
+                <i class="icon-arrow-right"></i> Manage Category
+            </a>
+        </li>
                     </ul>
                 </li>
 
