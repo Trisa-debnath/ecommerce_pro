@@ -27,7 +27,7 @@
                     <!-- Category Name -->
                     <div class="form-group mb-4">
                         <label for="name" class="form-label fw-bold">Category Name</label>
-                        <input type="text" name="name" 
+                        <input type="text" name="name" value="{{ old('name') }}"
                                class="form-control border border-primary rounded py-2 px-3"
                                id="name" placeholder="Enter category name" required>
                     </div>
@@ -35,12 +35,14 @@
                     <!-- Status -->
                     <div class="form-group mb-4">
                         <label for="status" class="form-label fw-bold">Status</label>
-                        <select name="status" 
-                                class="form-control border border-success rounded py-2 px-3" 
+                        <select name="status"
+                                class="form-control border border-success rounded py-2 px-3"
                                 id="status">
-                            <option value="1" selected>Active</option>
-                            <option value="0">Inactive</option>
+                            <option value="1" {{ old('status') == '1' ? 'selected' : ''}}>Active</option>
+                            <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Inactive</option>
                         </select>
+
+
                     </div>
 
                     <!-- Submit Button -->

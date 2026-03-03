@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\SubCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -18,10 +19,9 @@ class ProductController extends Controller
 
 
 
-//AJAX
 public function getSubcategories($id)
 {
-    $subcategories = \App\Models\SubCategory::where('category_id', $id)->where('status', 1)->get();
+    $subcategories = SubCategory::where('category_id', $id)->where('status', 1)->get();
     return response()->json($subcategories);
 }
 

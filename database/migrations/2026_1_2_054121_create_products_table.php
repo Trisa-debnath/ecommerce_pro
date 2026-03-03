@@ -15,10 +15,12 @@ return new class extends Migration
         $table->id();
     $table->string('name');
      $table->foreignId('category_id')->constrained()->onDelete('cascade');
-    $table->foreignId('subcategory_id')->nullable()->constrained()->onDelete('set null');
+
+$table->foreignId('subcategory_id')->nullable()->constrained('sub_categories')->onDelete('set null');
+
     $table->string('slug')->unique();
     $table->decimal('price', 10, 2);
-     $table->decimal('discount_persent', 10, 2)->nullable();
+     $table->decimal('discount_percent', 10, 2)->nullable();
     $table->integer('quantity');
     $table->text('description')->nullable();
     $table->string('image')->nullable();
@@ -26,6 +28,15 @@ return new class extends Migration
 
             $table->timestamps();
         });
+
+
+
+
+
+
+
+
+        
     }
 
     /**
