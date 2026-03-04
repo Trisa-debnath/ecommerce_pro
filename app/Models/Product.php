@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
+use App\Models\SubCategory;
 
 class Product extends Model
 {
@@ -25,7 +27,7 @@ class Product extends Model
     }
 
     public function subcategory() {
-    return $this->belongsTo(SubCategory::class, 'sub_categories_id');
+    return $this->belongsTo(SubCategory::class, 'subcategory_id');
 }
 
 }

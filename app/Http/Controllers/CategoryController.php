@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-    
+
     $categories = Category::latest()->paginate(10);
     return view('admin.category.manage', compact('categories'));
 
@@ -63,28 +63,34 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
-    {
-         
-      
-$category->update([
-    'name' => $request->name,
-    'status' => $request->status,
-]);
 
-        return redirect()->route('admin.category.index')
-            ->with('success', 'Category updated successfully');
-   
-    }
+
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+    ]);
+
+    $category = Category::findOrFail($id);
+    $category->update([
+        'name' => $request->name,
+        'status' => $request->status,
+    ]);
+
+    return redirect()->route('admin.category.manage')
+        ->with('success', 'Category updated successfully');
+}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
-    {
-        $category->delete();
-        return redirect()->back()
-            ->with('success', 'Category deleted successfully');
-  
-    }
+public function destroy($id)
+{
+    $category = Category::findOrFail($id);
+    $category->delete();
+    return redirect()->back()->with('success', 'Category deleted successfully');
+}
+
+
+
 }

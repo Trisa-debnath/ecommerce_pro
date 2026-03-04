@@ -22,12 +22,13 @@
    <script src="{{asset('admin/plugins/waypoints/jquery.waypoints.min.js')}}"></script>
    <script src="{{asset('admin/plugins/countdown/js/jquery.counterup.js')}}"></script>
 
-   <!-- Echart js -->
-   <script src="{{asset('admin/plugins/charts/echarts/js/echarts-all.js')}}"></script>
+ <!-- Echart js -->
+{{-- <script src="{{asset('admin/plugins/charts/echarts/js/echarts-all.js')}}"></script> --}}
 
+   <!--
    <script src="https://code.highcharts.com/highcharts.js"></script>
    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-   <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+   <script src="https://code.highcharts.com/highcharts-3d.js"></script> -->
 
    <!-- custom js -->
    <script type="text/javascript" src="{{asset('admin/js/main.min.js')}}"></script>

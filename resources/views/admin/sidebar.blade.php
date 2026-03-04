@@ -3,7 +3,7 @@
                 <li class="active treeview">
                     <a class="waves-effect waves-dark" href="index.html">
                         <i class="icon-speedometer"></i><span> Dashboard</span>
-                    </a>                
+                    </a>
                 </li>
                 <li class="nav-level">--- Components</li>
                 <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> Category</span><i class="icon-arrow-down"></i></a>
@@ -12,6 +12,17 @@
                          <li>
             <a href="{{ route('admin.category.manage') }}">
                 <i class="icon-arrow-right"></i> Manage Category
+            </a>
+        </li>
+                    </ul>
+                </li>
+
+                 <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> Sub-Category</span><i class="icon-arrow-down"></i></a>
+                      <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" href="{{ route('admin.subcategory.create') }}"><i class="icon-arrow-right"></i>Add Sub-category</a></li>
+                         <li>
+            <a href="{{ route('admin.subcategory.manage') }}">
+                <i class="icon-arrow-right"></i> Manage Sub-Category
             </a>
         </li>
                     </ul>
@@ -27,15 +38,15 @@
                 <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-book-open"></i><span> Forms</span><i class="icon-arrow-down"></i></a>
                     <ul class="treeview-menu">
                         <li><a class="waves-effect waves-dark" href="form-elements-bootstrap.html"><i class="icon-arrow-right"></i> Form Elements Bootstrap</a></li>
-                        
+
                         <li><a class="waves-effect waves-dark" href="form-elements-advance.html"><i class="icon-arrow-right"></i> Form Elements Advance</a></li>
                     </ul>
                 </li>
-                
+
                 <li class="treeview">
                     <a class="waves-effect waves-dark" href="basic-table.html">
                         <i class="icon-list"></i><span> Table</span>
-                    </a>                
+                    </a>
                 </li>
 
 
@@ -46,16 +57,16 @@
                         <li class="treeview"><a href="#!"><i class="icon-arrow-right"></i><span> Authentication</span><i class="icon-arrow-down"></i></a>
                             <ul class="treeview-menu">
                                 <li><a class="waves-effect waves-dark" href="register1.html" target="_blank"><i class="icon-arrow-right"></i> Register 1</a></li>
-                                
+
                                 <li><a class="waves-effect waves-dark" href="login1.html" target="_blank"><i class="icon-arrow-right"></i><span> Login 1</span></a></li>
                                 <li><a class="waves-effect waves-dark" href="forgot-password.html" target="_blank"><i class="icon-arrow-right"></i><span> Forgot Password</span></a></li>
-                                
+
                             </ul>
                         </li>
-                        
+
                         <li><a class="waves-effect waves-dark" href="404.html" target="_blank"><i class="icon-arrow-right"></i> Error 404</a></li>
                         <li><a class="waves-effect waves-dark" href="sample-page.html"><i class="icon-arrow-right"></i> Sample Page</a></li>
-                        
+
                     </ul>
                 </li>
 

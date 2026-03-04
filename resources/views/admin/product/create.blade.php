@@ -28,7 +28,7 @@
                           >
 									<h5 class=" card-title mb-2 ">Add product</h5>
 								</div>
-                                
+
       <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
@@ -61,7 +61,7 @@
             <div class="mb-3" >
                 <label for="name" class="form-label fw-bold text-dark" >Give name of your Product</label>
                 <input type="text" name="name" id="name" class="form-control" required placeholder="add product name" >
-            </div> 
+            </div>
 <!--  description -->
              <div class="mb-3" >
                 <label for="description" class="form-label fw-bold text-dark" >Description</label>
@@ -85,13 +85,13 @@
         <option value="0">Inactive</option>
     </select>
      </div>
-           
-     
+
+
    <!-- 	regular_price  -->
 <div class="mb-3" >
                 <label for="price" class="form-label fw-bold text-dark" >Product Regular Price</label>
                 <input type="number" name="price" id="price" class="form-control"  >
-            </div> 
+            </div>
              <!-- 	discounted_percent -->
 <div class="mb-3">
     <label for="discount_price" class="form-label fw-bold text-dark">Discount Percent (if any)</label>
@@ -103,8 +103,8 @@
                 <label for="quantity" class="form-label fw-bold text-dark" >Satock Quantity</label>
                 <input type="number" name="quantity" id="quantity" class="form-control"  >
             </div>
-          
-               <!-- Category & Subcategory 
+
+               <!-- Category & Subcategory
                 <div class="mb-3">
          <livewire:category-subcategory/>
                 </div>-->
@@ -135,26 +135,28 @@
 
 
 
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#category').on('change', function() {
+        $('select[name="category_id"]').on('change', function() {
             var categoryId = $(this).val();
             if (categoryId) {
                 $.ajax({
-                    url: '/admin/get-subcategories/' + categoryId,
+                    url: '/admin/product/get-subcategories/' + categoryId,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        $('#subcategory').empty();
-                        $('#subcategory').append('<option value="">Select Subcategory</option>');
+                        $('select[name="subcategory_id"]').empty();
+                        $('select[name="subcategory_id"]').append('<option value="">Select Sub-Category</option>');
                         $.each(data, function(key, value) {
-                            $('#subcategory').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            $('select[name="subcategory_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
                         });
                     }
                 });
             } else {
-                $('#subcategory').empty();
+                $('select[name="subcategory_id"]').empty();
             }
         });
     });

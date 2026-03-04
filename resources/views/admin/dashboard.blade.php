@@ -51,9 +51,9 @@
 </head>
 
 <body class="sidebar-mini fixed">
-    <div class="loader-bg">
+   <!-- <div class="loader-bg">
         <div class="loader-bar"></div>
-    </div>
+    </div>-->
 
     <div class="wrapper">
         <!-- Navbar -->
@@ -78,10 +78,10 @@
 
             @yield('admin_layout')
 
-           
+
         </div>
 
-       
+
         <footer class="admin-footer">
             &copy; {{ date('Y') }} <strong>MyAdminPanel</strong>. All Rights Reserved.
         </footer>

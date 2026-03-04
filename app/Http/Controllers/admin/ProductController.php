@@ -19,11 +19,6 @@ class ProductController extends Controller
 
 
 
-public function getSubcategories($id)
-{
-    $subcategories = SubCategory::where('category_id', $id)->where('status', 1)->get();
-    return response()->json($subcategories);
-}
 
 
 
