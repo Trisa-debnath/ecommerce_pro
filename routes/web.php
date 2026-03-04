@@ -54,15 +54,6 @@ Route::post('/category/store', 'store')->name('admin.category.store');
 
 });
 
-Route::controller(ProductController::class)->group(function () {
-    Route::get('/product/create','create')->name('admin.product.create');
-Route::post('/product/store', 'store')->name('admin.product.store');
-    Route::get('/product','index')->name('admin.product.manage');
- Route::get('/product/{id}/edit','edit')->name('admin.product.edit');
-    Route::post('/product/{id}/update','update')->name('admin.product.update');
-    Route::delete('/product/{id}','destroy')->name('admin.product.delete');
-
-});
 
 Route::controller(SubCategoryController::class)->group(function(){
 Route::get('/subcategory/manage','index')->name('admin.subcategory.manage');
@@ -73,7 +64,17 @@ Route::post('/subcategory/{id}/update','update')->name('admin.subcategory.update
 Route::delete('/subcategory/{id}','destroy')->name('admin.subcategory.delete');
 });
 
+Route::controller(ProductController::class)->group(function () {
+Route::get('/get-subcategories/{id}', 'getSubcategories');
 
+    Route::get('/product/create','create')->name('admin.product.create');
+Route::post('/product/store', 'store')->name('admin.product.store');
+    Route::get('/product','index')->name('admin.product.manage');
+ Route::get('/product/{id}/edit','edit')->name('admin.product.edit');
+    Route::post('/product/{id}/update','update')->name('admin.product.update');
+    Route::delete('/product/{id}','destroy')->name('admin.product.delete');
+
+});
 
 });
  });
