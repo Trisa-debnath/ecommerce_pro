@@ -3,14 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Category;
-use App\Models\SubCategory;
 
 class Product extends Model
 {
-     protected $fillable = [
-      'name',
-     'category_id',
+    protected $fillable = [
+        'name',
+        'category_id',
         'subcategory_id',
 
         'slug',
@@ -19,15 +17,16 @@ class Product extends Model
         'quantity',
         'description',
         'image',
-        'status'
+        'status',
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function subcategory() {
-    return $this->belongsTo(SubCategory::class, 'subcategory_id');
-}
-
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class, 'subcategory_id');
+    }
 }

@@ -12,31 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-        $table->id();
-    $table->string('name');
-     $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->id();
+            $table->string('name');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
 
-$table->foreignId('subcategory_id')->nullable()->constrained('sub_categories')->onDelete('set null');
+            $table->foreignId('subcategory_id')->nullable()->constrained('sub_categories')->onDelete('set null');
 
-    $table->string('slug')->unique();
-    $table->decimal('price', 10, 2);
-     $table->decimal('discount_percent', 10, 2)->nullable();
-    $table->integer('quantity');
-    $table->text('description')->nullable();
-    $table->string('image')->nullable();
-    $table->boolean('status')->default(1);
+            $table->string('slug')->unique();
+            $table->decimal('price', 10, 2);
+            $table->decimal('discount_percent', 10, 2)->nullable();
+            $table->integer('quantity');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('status')->default(1);
 
             $table->timestamps();
         });
 
-
-
-
-
-
-
-
-        
     }
 
     /**

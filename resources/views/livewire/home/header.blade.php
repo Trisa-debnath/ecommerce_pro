@@ -1,4 +1,13 @@
-<header class="header_section">
+<?php
+
+use function Livewire\Volt\{state};
+
+//
+
+?>
+
+<div>
+    <header class="header_section">
             <div class="container">
                <nav class="navbar navbar-expand-lg custom_nav-container ">
                   <a class="navbar-brand" href="index.html"><img width="250" src="home/images/logo.png" alt="#" /></a>
@@ -26,7 +35,7 @@
                         <li class="nav-item">
                            <a class="nav-link" href="contact.html">Contact</a>
                         </li>
-                    
+
                         <form class="form-inline">
                            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                            <i class="fa fa-search" aria-hidden="true"></i>
@@ -66,3 +75,5 @@
                </nav>
             </div>
          </header>
+
+</div>

@@ -1,91 +1,74 @@
 <?php
 
+use App\Http\Controllers\admin\AdminMainController;
+use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\SubCategoryController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\home\HomeMainController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\AdminMainController;
-use App\Http\Controllers\home\HomeMainController;
-use App\Http\Controllers\CategoryController;
 
-use App\Http\Controllers\admin\SubCategoryController;
-use App\Http\Controllers\admin\ProductController;
-
-//home
+// home
 Route::controller(HomeMainController::class)->group(function () {
-   Route::get('/', 'index')->name('home.index');
+    Route::get('/', 'index')->name('home.index');
 });
 
-//home
+// home
 
-//Route::middleware(['auth', 'verified','rolemanager:user'])->group(function () {
+// Route::middleware(['auth', 'verified','rolemanager:user'])->group(function () {
 //    Route::controller(HomeMainController::class)->group(function () {
 //    Route::prefix('home')->group(function () {
 //
-//});
-//
-//});
 // });
-
-
-
-
-
-
-
-
+//
+// });
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified','rolemanager:user'])->name('dashboard');
-//admin
-Route::middleware(['auth', 'verified','rolemanager:admin'])->group(function () {
-     Route::prefix('admin')->group(function () {
+})->middleware(['auth', 'verified', 'rolemanager:user'])->name('dashboard');
+// admin
+Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
 
-    Route::controller(AdminMainController::class)->group(function () {
-    Route::get('/dashboard', 'index')->name('admin.dashboard');
+        Route::controller(AdminMainController::class)->group(function () {
+            Route::get('/dashboard', 'index')->name('admin.dashboard');
+        });
+       
+
+        Route::controller(CategoryController::class)->group(function () {
+            Route::get('/category/create', 'create')->name('admin.category.create');
+            Route::post('/category/store', 'store')->name('admin.category.store');
+            Route::get('/category', 'index')->name('admin.category.manage');
+            Route::get('/category/{id}/edit', 'edit')->name('admin.category.edit');
+            Route::post('/category/{id}/update', 'update')->name('admin.category.update');
+            Route::delete('/category/{id}', 'destroy')->name('admin.category.delete');
+
+        });
+
+        Route::controller(SubCategoryController::class)->group(function () {
+            Route::get('/subcategory/manage', 'index')->name('admin.subcategory.manage');
+            Route::get('/subcategory/create', 'create')->name('admin.subcategory.create');
+            Route::post('/subcategory/store', 'store')->name('admin.subcategory.store');
+            Route::get('/subcategory/{id}/edit', 'edit')->name('admin.subcategory.edit');
+            Route::post('/subcategory/{id}/update', 'update')->name('admin.subcategory.update');
+            Route::delete('/subcategory/{id}', 'destroy')->name('admin.subcategory.delete');
+        });
+
+        Route::controller(ProductController::class)->group(function () {
+            Route::get('/get-subcategories/{id}', 'getSubcategories');
+
+            Route::get('/product/create', 'create')->name('admin.product.create');
+            Route::post('/product/store', 'store')->name('admin.product.store');
+            Route::get('/product', 'index')->name('admin.product.manage');
+            Route::get('/product/{id}/edit', 'edit')->name('admin.product.edit');
+            Route::post('/product/{id}/update', 'update')->name('admin.product.update');
+            Route::delete('/product/{id}', 'destroy')->name('admin.product.delete');
+
+        });
+
+    });
 });
-
- Route::controller(CategoryController::class)->group(function () {
-    Route::get('/category/create','create')->name('admin.category.create');
-Route::post('/category/store', 'store')->name('admin.category.store');
-    Route::get('/category','index')->name('admin.category.manage');
- Route::get('/category/{id}/edit','edit')->name('admin.category.edit');
-    Route::post('/category/{id}/update','update')->name('admin.category.update');
-    Route::delete('/category/{id}','destroy')->name('admin.category.delete');
-
-});
-
-
-Route::controller(SubCategoryController::class)->group(function(){
-Route::get('/subcategory/manage','index')->name('admin.subcategory.manage');
-Route::get('/subcategory/create','create')->name('admin.subcategory.create');
-Route::post('/subcategory/store','store')->name('admin.subcategory.store');
-Route::get('/subcategory/{id}/edit','edit')->name('admin.subcategory.edit');
-Route::post('/subcategory/{id}/update','update')->name('admin.subcategory.update');
-Route::delete('/subcategory/{id}','destroy')->name('admin.subcategory.delete');
-});
-
-Route::controller(ProductController::class)->group(function () {
-Route::get('/get-subcategories/{id}', 'getSubcategories');
-
-    Route::get('/product/create','create')->name('admin.product.create');
-Route::post('/product/store', 'store')->name('admin.product.store');
-    Route::get('/product','index')->name('admin.product.manage');
- Route::get('/product/{id}/edit','edit')->name('admin.product.edit');
-    Route::post('/product/{id}/update','update')->name('admin.product.update');
-    Route::delete('/product/{id}','destroy')->name('admin.product.delete');
-
-});
-
-});
- });
-
-
-
-
-
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -20,11 +20,13 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+
+      @livewireStyles
    </head>
    <body>
       <div class="hero_area">
          <!-- header section strats -->
-         @include('home.header')
+         <livewire:home.header />
          <!-- end header section -->
          <!-- slider section -->
         @include('home.slider')
@@ -33,13 +35,14 @@
       <!-- why section -->
      @include('home.why')
       <!-- end why section -->
-      
+
       <!-- arrival section -->
       @include('home.arrival')
       <!-- end arrival section -->
-      
+
       <!-- product section -->
-     @include('home.product')
+     <livewire:home.product />
+
       <!-- end product section -->
 
       <!-- subscribe section -->
@@ -53,9 +56,9 @@
       <!-- footer end -->
       <div class="cpy_">
          <p class="mx-auto">©  Trisha <a href="https://html.design/">Contact me for more web site</a><br>
-         
+
             Distributed By <a href="#" target="_blank">Trisha</a>
-         
+
          </p>
       </div>
       <!-- jQery -->
@@ -66,5 +69,8 @@
       <script src="home/js/bootstrap.js"></script>
       <!-- custom js -->
       <script src="home/js/custom.js"></script>
+
+
+      @livewireScripts
    </body>
 </html>

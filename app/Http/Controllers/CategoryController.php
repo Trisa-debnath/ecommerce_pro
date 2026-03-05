@@ -13,8 +13,9 @@ class CategoryController extends Controller
     public function index()
     {
 
-    $categories = Category::latest()->paginate(10);
-    return view('admin.category.manage', compact('categories'));
+        $categories = Category::latest()->paginate(10);
+
+        return view('admin.category.manage', compact('categories'));
 
     }
 
@@ -31,16 +32,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-          $request->validate([
-        'name' => 'required|string|max:255',
-    ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
 
-    Category::create([
-        'name' => $request->name,
-        'status' => $request->status ?? 1
-    ]);
+        Category::create([
+            'name' => $request->name,
+            'status' => $request->status ?? 1,
+        ]);
 
-    return redirect()->route('admin.category.create')->with('success', 'Category created successfully!');
+        return redirect()->route('admin.category.create')->with('success', 'Category created successfully!');
     }
 
     /**
@@ -56,41 +57,38 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-         $category = Category::findOrFail($id);
-       return view('admin.category.edit', compact('category'));
+        $category = Category::findOrFail($id);
+
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-
-
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
 
-    $category = Category::findOrFail($id);
-    $category->update([
-        'name' => $request->name,
-        'status' => $request->status,
-    ]);
+        $category = Category::findOrFail($id);
+        $category->update([
+            'name' => $request->name,
+            'status' => $request->status,
+        ]);
 
-    return redirect()->route('admin.category.manage')
-        ->with('success', 'Category updated successfully');
-}
+        return redirect()->route('admin.category.manage')
+            ->with('success', 'Category updated successfully');
+    }
 
     /**
      * Remove the specified resource from storage.
      */
-public function destroy($id)
-{
-    $category = Category::findOrFail($id);
-    $category->delete();
-    return redirect()->back()->with('success', 'Category deleted successfully');
-}
+    public function destroy($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
 
-
-
+        return redirect()->back()->with('success', 'Category deleted successfully');
+    }
 }

@@ -14,9 +14,9 @@ class rolemanager
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,$role): Response
+    public function handle(Request $request, Closure $next, $role): Response
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return redirect()->route('login');
         }
 
@@ -30,13 +30,10 @@ class rolemanager
             return $next($request);
         }
 
-        
         if ($authUserRole == 1) {
             return redirect()->route('admin.dashboard');
         }
-       
-         return redirect()->route('home.index');
-         }
 
-
+        return redirect()->route('home.index');
+    }
 }
