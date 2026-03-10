@@ -7,11 +7,17 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\home\HomeMainController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
 // home
 Route::controller(HomeMainController::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
 });
+
+Volt::route('/product/{id}', 'home.product_details')->name('product.details');
+
+
+
 
 // home
 
@@ -28,13 +34,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'rolemanager:user'])->name('dashboard');
 // admin
+//Route::middleware(['auth', 'verified', 'rolemanager:admin', 'throttle:login'])
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::prefix('admin')->group(function () {
 
         Route::controller(AdminMainController::class)->group(function () {
             Route::get('/dashboard', 'index')->name('admin.dashboard');
         });
-       
+
 
         Route::controller(CategoryController::class)->group(function () {
             Route::get('/category/create', 'create')->name('admin.category.create');

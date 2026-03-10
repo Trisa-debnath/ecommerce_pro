@@ -20,6 +20,15 @@ class Product extends Model
         'status',
     ];
 
+
+    public function getDiscountPriceAttribute()
+{
+    if ($this->discount_percent > 0) {
+        return $this->price - ($this->price * $this->discount_percent / 100);
+    }
+    return $this->price;
+}
+
     public function category()
     {
         return $this->belongsTo(Category::class);

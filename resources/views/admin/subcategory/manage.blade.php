@@ -10,6 +10,7 @@
             <th>Category Name</th>
             <th>Sub-Category Name</th>
             <th>Status</th>
+             <th>Slug</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -25,6 +26,7 @@
                     <span class="badge badge-danger">Inactive</span>
                 @endif
             </td>
+            <td>{{ $row->slug }}</td> 
             <td>
                 <a href="{{ route('admin.subcategory.edit', $row->id) }}" class="btn btn-sm btn-info">Edit</a>
                 <a href="{{ route('admin.subcategory.delete', $row->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>

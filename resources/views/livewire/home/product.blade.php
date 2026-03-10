@@ -19,7 +19,7 @@ new class extends Component {
         $query = Product::query();
 
         if ($this->search) {
-            $query->where('title', 'like', '%' . $this->search . '%');
+            $query->where('name', 'like', '%' . $this->search . '%');
         }
 
         if ($this->category_id) {
@@ -51,7 +51,7 @@ new class extends Component {
                     <select wire:model.live="category_id" class="form-control">
                         <option value="">All Categories / Brands</option>
                         @foreach($categories as $cat)
-                            <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -66,7 +66,7 @@ new class extends Component {
                     <div class="box h-100">
                         <div class="option_container">
                             <div class="options">
-                                <a href="#" class="option1">
+                                <a href="{{ route('product.details', $product->id) }}" class="option1">
                                     <i class="fa fa-eye"></i> Details
                                 </a>
                                 <a href="#" wire:click.prevent="addToCart({{ $product->id }})" class="option2">
@@ -78,22 +78,31 @@ new class extends Component {
                             </div>
                         </div>
                         <div class="img-box">
-                            <img src="{{ asset('product/' . $product->image) }}" alt="{{ $product->title }}">
+<img src="{{ asset('uploads/products/' . $product->image) }}"
+ alt="{{ $product->title }}">
                         </div>
-                        <div class="detail-box">
-                            <h5>{{ $product->title }}</h5>
-                            @if($product->discount_price != null)
-                                <h6 style="color: red">
-                                    ৳{{ number_format($product->discount_price) }}
-                                    <br>
-                                    <span style="text-decoration: line-through; color: blue; font-size: 14px;">
-                                        ৳{{ number_format($product->price) }}
-                                    </span>
-                                </h6>
-                            @else
-                                <h6 style="color: blue">৳{{ number_format($product->price) }}</h6>
-                            @endif
-                        </div>
+
+
+<div class="detail-box">
+    <h5>{{ $product->name }}</h5>
+
+    @if($product->discount_percent > 0)
+        <h6 style="color: red">
+            ৳{{ number_format($product->discount_price) }}
+            <br>
+            <span style="text-decoration: line-through; color: blue; font-size: 14px;">
+                ৳{{ number_format($product->price) }}
+            </span>
+            <span class="badge badge-success ml-1" style="font-size: 10px;">
+                {{ $product->discount_percent }}% OFF
+            </span>
+        </h6>
+    @else
+        <h6 style="color: blue">৳{{ number_format($product->price) }}</h6>
+    @endif
+</div>
+
+
                     </div>
                 </div>
                 @empty

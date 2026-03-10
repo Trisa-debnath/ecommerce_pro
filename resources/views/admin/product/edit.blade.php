@@ -1,6 +1,7 @@
 @extends('admin.dashboard')
 @section('title', 'Create product')
-@section('content')
+@section('admin_layout')
+
 <div class="container">
     <h2>Edit Product</h2>
 
@@ -35,9 +36,9 @@
 
      <div class="row">
 <div class="col-md-6 mb-3">
-                    <label>Slug </label>
-                    <input type="text" name="slug" class="form-control" placeholder="product-url-slug">
-                </div>
+        <label>Slug </label>
+     <input type="text" name="slug" class="form-control" placeholder="product-url-slug">
+        value="{{ $product->slug }}"</div>
                   </div>
 
                    <div class="row">
@@ -86,4 +87,20 @@
         <button type="submit" class="btn btn-success">Update Product</button>
     </form>
 </div>
+
+<script>
+    $(document).ready(function() {
+ $('#product_name').on('keyup', function() {
+            let text = $(this).val();
+            let slug = text.toLowerCase()
+                           .replace(/[^a-z0-9 -]/g, '')
+                           .replace(/\s+/g, '-')
+                           .replace(/-+/g, '-');
+            $('#slug').val(slug);
+        });
+    });
+
+
+
+</script>
 @endsection

@@ -23,11 +23,22 @@
 
       @livewireStyles
    </head>
+
    <body>
+
+
+
       <div class="hero_area">
          <!-- header section strats -->
          <livewire:home.header />
          <!-- end header section -->
+
+ 
+   <main>
+    {{ $slot ?? '' }}
+</main>
+
+
          <!-- slider section -->
         @include('home.slider')
          <!-- end slider section -->

@@ -27,6 +27,19 @@
             <option value="0">Inactive</option>
         </select>
     </div>
+    <div class="form-group">
+    <label>Slug</label>
+    <input type="text" name="slug" id="slug" class="form-control" readonly>
+</div>
     <button type="submit" class="btn btn-primary">Save Sub-Category</button>
 </form>
+
+<script>
+    document.querySelector('input[name="name"]').addEventListener('keyup', function() {
+        let text = this.value;
+        text = text.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+        document.getElementById('slug').value = text;
+    });
+</script>
+
 @endsection

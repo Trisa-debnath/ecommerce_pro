@@ -14,19 +14,38 @@
                 <i class="icon-arrow-right"></i> Manage Category
             </a>
         </li>
-                    </ul>
-                </li>
+         </ul>
+        </li>
 
-                 <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> Sub-Category</span><i class="icon-arrow-down"></i></a>
+                 <li class="treeview"><a class="waves-effect waves-dark" href="#!">
+                    <i class="icon-briefcase"></i><span> Sub-Category</span>
+                    <i class="icon-arrow-down"></i></a>
                       <ul class="treeview-menu">
-                        <li><a class="waves-effect waves-dark" href="{{ route('admin.subcategory.create') }}"><i class="icon-arrow-right"></i>Add Sub-category</a></li>
+<li><a class="waves-effect waves-dark" href="{{ route('admin.subcategory.create') }}">
+    <i class="icon-arrow-right"></i>Add Sub-category</a></li>
                          <li>
             <a href="{{ route('admin.subcategory.manage') }}">
                 <i class="icon-arrow-right"></i> Manage Sub-Category
             </a>
         </li>
-                    </ul>
-                </li>
+         </ul>
+        </li>
+
+
+         <li class="treeview"><a class="waves-effect waves-dark" href="#!">
+                    <i class="icon-briefcase"></i><span> Product</span>
+                    <i class="icon-arrow-down"></i></a>
+                      <ul class="treeview-menu">
+<li><a class="waves-effect waves-dark" href="{{ route('admin.product.create') }}">
+    <i class="icon-arrow-right"></i>Add Product</a></li>
+                         <li>
+            <a href="{{ route('admin.product.manage') }}">
+                <i class="icon-arrow-right"></i> Manage Product
+            </a>
+        </li>
+         </ul>
+        </li>
+
 
                 <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-chart"></i><span> Charts &amp; Maps</span><span class="label label-success menu-caption">New</span><i class="icon-arrow-down"></i></a>
                     <ul class="treeview-menu">

@@ -18,7 +18,13 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
+   ->name('login');
+
+        //for login rate limitting
+//Route::post('login', [AuthenticatedSessionController::class, 'store'])
+               // ->middleware('throttle:login');
+
+
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
@@ -33,6 +39,8 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+
+
 });
 
 Route::middleware('auth')->group(function () {

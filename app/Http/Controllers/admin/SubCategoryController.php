@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class SubCategoryController extends Controller
 {
     public function index()
@@ -30,12 +30,13 @@ class SubCategoryController extends Controller
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255',
             'status' => 'required|boolean',
+            'slug' => 'required|unique:sub_categories,slug',
         ]);
         SubCategory::create([
             'category_id' => $request->category_id,
             'name' => $request->name,
-            // 'slug' => Str::slug($request->name),
             'status' => $request->status,
+             'slug' => Str::slug($request->name),
         ]);
 
         return redirect()->route('admin.subcategory.manage')->with('success', 'Sub-Category Created!');
@@ -54,13 +55,15 @@ class SubCategoryController extends Controller
         $request->validate([
             'category_id' => 'required',
             'name' => 'required|string|max:255',
+            // 'unique:table,column,except_id'
+        'slug' => 'required|unique:sub_categories,slug,' . $id,
         ]);
 
         $subcategory = SubCategory::findOrFail($id);
         $subcategory->update([
             'category_id' => $request->category_id,
             'name' => $request->name,
-            //  'slug' => Str::slug($request->name),
+            'slug' => Str::slug($request->name),
             'status' => $request->status,
         ]);
 

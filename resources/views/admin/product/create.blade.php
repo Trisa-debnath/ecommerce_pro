@@ -1,13 +1,17 @@
 @extends('admin.dashboard')
-@section('title', 'Create product')
-@section('content')
+
+@section('title', 'Create Product')
+
+@section('admin_layout')
+
+
 <div class="container">
     <h2>Add New Product</h2>
     <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group mb-3">
         <label>Product Name</label>
-        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+        <input type="text" name="name" id="product_name" class="form-control @error('name') is-invalid @enderror"
          value="{{ old('name') }}"placeholder="Enter Product Name" required>
         </div>
         <div class="form-group mb-3">
@@ -27,10 +31,11 @@
             </select>
         </div>
         <div class="row">
-<div class="col-md-6 mb-3">
-                    <label>Slug </label>
-                    <input type="text" name="slug" class="form-control" placeholder="product-url-slug">
-                </div>
+             <div class="form-group">
+    <label>Slug</label>
+    <input type="text" name="slug" id="slug" class="form-control" readonly>
+</div>
+
                   </div>
 
         <div class="row">
@@ -93,7 +98,22 @@
                 $('#subcategory_id').empty();
             }
         });
+
+
+
+// Slug Generator
+        $('#product_name').on('keyup', function() {
+            let text = $(this).val();
+            let slug = text.toLowerCase()
+                           .replace(/[^a-z0-9 -]/g, '')
+                           .replace(/\s+/g, '-')
+                           .replace(/-+/g, '-');
+            $('#slug').val(slug);
+        });
     });
+
+
+
 </script>
 @endsection
 
