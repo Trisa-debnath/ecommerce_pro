@@ -79,7 +79,7 @@ new class extends Component {
                         </div>
                         <div class="img-box">
 <img src="{{ asset('uploads/products/' . $product->image) }}"
- alt="{{ $product->title }}">
+ alt="{{ $product->name }}">
                         </div>
 
 

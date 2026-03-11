@@ -44,7 +44,7 @@
                      </div>
                   </div>
                      </div>
-                  </div>     
+                  </div>
                   <div class="col-md-5">
                      <div class="widget_menu">
                         <h3>Newsletter</h3>
@@ -67,4 +67,14 @@
                </div>
             </div>
          </div>
+
+
+<div class="cpy_">
+         <p class="mx-auto">©  Trisha <a href="https://html.design/">Contact me for more web site</a><br>
+
+            Distributed By <a href="#" target="_blank">Trisha</a>
+
+         </p>
+      </div>
+
       </footer>

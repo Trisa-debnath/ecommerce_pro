@@ -33,7 +33,7 @@
          <livewire:home.header />
          <!-- end header section -->
 
- 
+
    <main>
     {{ $slot ?? '' }}
 </main>
@@ -65,13 +65,7 @@
       <!-- footer start -->
      @include('home.footer')
       <!-- footer end -->
-      <div class="cpy_">
-         <p class="mx-auto">©  Trisha <a href="https://html.design/">Contact me for more web site</a><br>
-
-            Distributed By <a href="#" target="_blank">Trisha</a>
-
-         </p>
-      </div>
+      
       <!-- jQery -->
       <script src="js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

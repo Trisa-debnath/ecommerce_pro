@@ -14,7 +14,7 @@ Route::controller(HomeMainController::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
 });
 
-Volt::route('/product/{id}', 'home.product_details')->name('product.details');
+Volt::route('/product/{id}', 'home.product-details')->name('product.details');
 
 
 

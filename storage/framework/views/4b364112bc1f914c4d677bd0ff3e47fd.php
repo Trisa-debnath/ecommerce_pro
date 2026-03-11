@@ -59,7 +59,7 @@ unset($__split);
 ?>
          <!-- end header section -->
 
- 
+
    <main>
     <?php echo e($slot ?? ''); ?>
 
@@ -117,13 +117,7 @@ unset($__split);
       <!-- footer start -->
      <?php echo $__env->make('home.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
       <!-- footer end -->
-      <div class="cpy_">
-         <p class="mx-auto">©  Trisha <a href="https://html.design/">Contact me for more web site</a><br>
-
-            Distributed By <a href="#" target="_blank">Trisha</a>
-
-         </p>
-      </div>
+      
       <!-- jQery -->
       <script src="js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

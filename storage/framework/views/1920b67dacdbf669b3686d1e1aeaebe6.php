@@ -53,7 +53,7 @@ use Livewire\WithPagination;
                         </div>
                         <div class="img-box">
 <img src="<?php echo e(asset('uploads/products/' . $product->image)); ?>"
- alt="<?php echo e($product->title); ?>">
+ alt="<?php echo e($product->name); ?>">
                         </div>
 
 
