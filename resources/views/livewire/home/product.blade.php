@@ -31,6 +31,37 @@ new class extends Component {
             'categories' => Category::all(),
         ];
     }
+
+public function addToCart($id)
+{
+    $product = Product::findOrFail($id);
+    $cart = session()->get('cart', []);
+
+    if(isset($cart[$id])) {
+        $cart[$id]['quantity']++;
+    } else {
+        $cart[$id] = [
+            "id" => $product->id,
+            "name" => $product->name,
+            "quantity" => 1,
+            "price" => $product->discount_price ?? $product->price,
+            "image" => $product->image
+        ];
+    }
+
+    session()->put('cart', $cart);
+
+    // SweetAlert
+    $this->dispatch('swal:modal', [
+        'type'  => 'success',
+        'title' => 'Added Successfully!!',
+        'text'  => $product->name . ' Product added to cart successfully!',
+        'icon'  => 'success'
+    ]);
+
+    $this->dispatch('cartUpdated');
+}
+
 }; ?>
 
 <div>
@@ -69,7 +100,7 @@ new class extends Component {
                                 <a href="{{ route('product.details', $product->id) }}" class="option1">
                                     <i class="fa fa-eye"></i> Details
                                 </a>
-                                <a href="#" wire:click.prevent="addToCart({{ $product->id }})" class="option2">
+                     <a href="{{route('cart')}}" wire:click.prevent="addToCart({{ $product->id }})" class="option2">
                                     <i class="fa fa-shopping-cart"></i> Add to Cart
                                 </a>
                                 <a href="#" class="option1 mt-2 bg-danger text-white">

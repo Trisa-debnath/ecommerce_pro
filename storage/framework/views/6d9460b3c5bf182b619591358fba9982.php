@@ -34,6 +34,24 @@
                            </button>
                         </form>
 
+
+<li class="nav-item ml-2">
+    <a class="nav-link position-relative" href="/cart" style="display: flex; align-items: center;">
+    <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 20px;"></i>
+
+    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session()->has('cart') && count(session('cart')) > 0): ?>
+
+    <span class="badge badge-danger position-absolute"
+     style="top: 0; right: -5px; border-radius: 50%; padding: 2px 6px; font-size: 10px;">
+
+            <?php echo e(count((array) session('cart'))); ?>
+
+                                    </span>
+                                <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                            </a>
+                        </li>
+
+
      <li class="nav-item d-flex align-items-center ml-3">
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(Route::has('login')): ?>
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->check()): ?>

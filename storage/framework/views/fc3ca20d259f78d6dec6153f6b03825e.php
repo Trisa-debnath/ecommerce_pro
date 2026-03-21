@@ -7,10 +7,12 @@ use Livewire\Attributes\Layout;
 ?>
 
 <div class="py-12 bg-gray-50">
-    <section class="product_section layout_padding">
-    <div class="container">
-        <div class="row bg-white p-4 shadow-sm rounded">
 
+    <div class="container">
+        <div class="font-weight-bold mb-3" style="font-size:2.6rem;
+         color: #002c3e; mb-3 ml-3;">
+                 <?php echo e($product->name); ?> Details </div>
+        <div class="row bg-white p-4 shadow-sm rounded">
             <div class="col-md-6 d-flex align-items-center justify-center">
                 <div class="img-box p-3 border rounded w-100 text-center bg-light">
                     <img src="<?php echo e(asset('uploads/products/' . $product->image)); ?>"
@@ -63,12 +65,14 @@ use Livewire\Attributes\Layout;
                     </div>
 
                     <div class="mb-4">
-                        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($product->quantity > 0): ?>
-                            <p class="text-success font-weight-bold"><i class="fa fa-check-circle"></i> In Stock (<?php echo e($product->quantity); ?> items left)</p>
-                        <?php else: ?>
-                            <p class="text-danger font-weight-bold"><i class="fa fa-times-circle"></i> Out of Stock</p>
-                        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-                    </div>
+                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($product->quantity > 0): ?>
+                <p class="text-success font-weight-bold"><i class="fa fa-check-circle">
+                    </i> In Stock (<?php echo e($product->quantity); ?> items left)</p>
+            <?php else: ?>
+            <p class="text-danger font-weight-bold"><i class="fa fa-times-circle">
+                </i> Out of Stock</p>
+            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+            </div>
 
                     <div class="d-flex flex-wrap align-items-center mb-4">
                         <div class="quantity_selector d-flex border rounded mr-3 mb-2" style="height: 48px;">
@@ -96,4 +100,4 @@ use Livewire\Attributes\Layout;
 
         </div>
     </div>
-</section></div><?php /**PATH D:\ecommerce_pro\resources\views\livewire/home/product-details.blade.php ENDPATH**/ ?>
+</div><?php /**PATH D:\ecommerce_pro\resources\views\livewire/home/product-details.blade.php ENDPATH**/ ?>

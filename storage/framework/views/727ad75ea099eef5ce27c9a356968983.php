@@ -18,4 +18,18 @@ new class extends Component implements Livewire\Volt\Contracts\FunctionalCompone
         (new Actions\CallHook('mount'))->execute(static::$__context, $this, get_defined_vars());
     }
 
+    public function getListeners()
+    {
+        $arguments = [static::$__context, $this, func_get_args()];
+
+        return (new Actions\ResolveListeners)->execute(...$arguments);
+    }
+
+    public function cartupdatedHandler()
+    {
+        $arguments = [static::$__context, $this, func_get_args()];
+
+        return (new Actions\CallListener('cartUpdated'))->execute(...$arguments);
+    }
+
 };

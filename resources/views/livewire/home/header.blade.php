@@ -1,8 +1,12 @@
 <?php
 
 use function Livewire\Volt\{state};
+use function Livewire\Volt\{on};
 
-//
+// for use Listener another component ,here cartupdateed Listening
+on(['cartUpdated' => function () {
+
+}]);
 
 ?>
 
@@ -41,6 +45,23 @@ use function Livewire\Volt\{state};
                            <i class="fa fa-search" aria-hidden="true"></i>
                            </button>
                         </form>
+
+
+<li class="nav-item ml-2">
+    <a class="nav-link position-relative" href="/cart" style="display: flex; align-items: center;">
+    <i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 20px;"></i>
+
+    @if(session()->has('cart') && count(session('cart')) > 0)
+
+    <span class="badge badge-danger position-absolute"
+     style="top: 0; right: -5px; border-radius: 50%; padding: 2px 6px; font-size: 10px;">
+
+            {{ count((array) session('cart')) }}
+                                    </span>
+                                @endif
+                            </a>
+                        </li>
+
 
      <li class="nav-item d-flex align-items-center ml-3">
     @if (Route::has('login'))

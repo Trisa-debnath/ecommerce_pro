@@ -43,7 +43,7 @@ use Livewire\WithPagination;
                                 <a href="<?php echo e(route('product.details', $product->id)); ?>" class="option1">
                                     <i class="fa fa-eye"></i> Details
                                 </a>
-                                <a href="#" wire:click.prevent="addToCart(<?php echo e($product->id); ?>)" class="option2">
+                     <a href="<?php echo e(route('cart')); ?>" wire:click.prevent="addToCart(<?php echo e($product->id); ?>)" class="option2">
                                     <i class="fa fa-shopping-cart"></i> Add to Cart
                                 </a>
                                 <a href="#" class="option1 mt-2 bg-danger text-white">

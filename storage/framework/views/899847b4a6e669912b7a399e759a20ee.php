@@ -1,6 +1,5 @@
      <header class="main-header-top hidden-print">
-         <a href="index.html" class="logo"><img class="img-fluid able-logo"
-            src="{{asset('admin/images/logo.png')}}" alt="Theme-logo"></a>
+         <a href="index.html" class="logo"><img class="img-fluid able-logo" src="<?php echo e(asset('admin/images/logo.png')); ?>" alt="Theme-logo"></a>
          <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
             <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
@@ -9,7 +8,7 @@
                   <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
                      <i class="ti-files"> </i><span> Files</span>
                   </a>
-               </li>
+               </li>               
                <li class="dropdown">
                   <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
                      <span>Dropdown </span><i class=" icofont icofont-simple-down"></i>
@@ -38,7 +37,7 @@
 
                <ul class="top-nav">
                   <!--Notification Menu-->
-
+                    
                   <li class="dropdown notification-menu">
                      <a href="#!" data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
                         <i class="icon-bell"></i>
@@ -49,7 +48,7 @@
                         <li class="bell-notification">
                            <a href="javascript:;" class="media">
                               <span class="media-left media-icon">
-                    <img class="img-circle" src="{{asset('admin/images/avatar-1.png')}}" alt="User Image">
+                    <img class="img-circle" src="<?php echo e(asset('admin/images/avatar-1.png')); ?>" alt="User Image">
                   </span>
                               <div class="media-body"><span class="block">Lisa sent you a mail</span><span class="text-muted block-time">2min ago</span></div>
                            </a>
@@ -57,17 +56,16 @@
                         <li class="bell-notification">
                            <a href="javascript:;" class="media">
                               <span class="media-left media-icon">
-                    <img class="img-circle" src="{{asset('admin/images/avatar-2.png')}}" alt="User Image">
+                    <img class="img-circle" src="<?php echo e(asset('admin/images/avatar-2.png')); ?>" alt="User Image">
                   </span>
                               <div class="media-body"><span class="block">Server Not Working</span><span class="text-muted block-time">20min ago</span></div>
                            </a>
                         </li>
                         <li class="bell-notification">
                            <a href="javascript:;" class="media"><span class="media-left media-icon">
-                    <img class="img-circle" src="{{asset('admin/images/avatar-3.png')}}" alt="User Image">
+                    <img class="img-circle" src="<?php echo e(asset('admin/images/avatar-3.png')); ?>" alt="User Image">
                   </span>
-                                    <div class="media-body"><span class="block">Transaction xyz complete</span>
-            <span class="text-muted block-time">3 hours ago</span></div></a>
+                                    <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block-time">3 hours ago</span></div></a>
                         </li>
                         <li class="not-footer">
                            <a href="#!">See all notifications.</a>
@@ -94,14 +92,14 @@
 
 
 
-@auth
+<?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->check()): ?>
 <li class="dropdown">
     <a href="#!" data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
         <img class="img-circle"
-             src="{{ asset('admin/images/avatar-1.png') }}"
+             src="<?php echo e(asset('admin/images/avatar-1.png')); ?>"
              alt="User Image"
              style="height:30px;width:30px;">
-        <span class="ms-1">{{ auth()->user()->name }}</span>
+        <span class="ms-1"><?php echo e(auth()->user()->name); ?></span>
         <i class="icofont icofont-simple-down"></i>
     </a>
 
@@ -115,8 +113,8 @@
         <li class="divider"></li>
 
         <li>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
+            <form method="POST" action="<?php echo e(route('logout')); ?>">
+                <?php echo csrf_field(); ?>
                 <button type="submit"
                         style="background:none;border:none;padding:0 15px;width:100%;text-align:left;"
                         class="text-danger">
@@ -126,20 +124,20 @@
         </li>
     </ul>
 </li>
-@endauth
+<?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
-@guest
+<?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(auth()->guard()->guest()): ?>
 <li>
-    <a href="{{ route('login') }}">
+    <a href="<?php echo e(route('login')); ?>">
         <i class="icon-login"></i> Login
     </a>
 </li>
-@endguest
+<?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
 
 
                   </li>
-
+                    
 
                </ul>
 
@@ -168,20 +166,20 @@
                      <div class="dummy-column">
                         <h2>Popular</h2>
                         <a class="dummy-media-object" href="#!">
-                           <img src="{{asset('admin/images/avatar-1.png')}}" alt="PagePreloadingEffect" />
+                           <img src="<?php echo e(asset('admin/images/avatar-1.png')); ?>" alt="PagePreloadingEffect" />
                            <h3>Page Preloading Effect</h3>
                         </a>
 
                            <a class="dummy-media-object" href="#!">
-                           <img src="{{asset('admin/images/avatar-1.png')}}" alt="DraggableDualViewSlideshow" />
+                           <img src="<?php echo e(asset('admin/images/avatar-1.png')); ?>" alt="DraggableDualViewSlideshow" />
                            <h3>Draggable Dual-View Slideshow</h3>
                         </a>
                      </div>
                      <div class="dummy-column">
                         <h2>Recent</h2>
                         <a class="dummy-media-object" href="#!">
-                         <img src="{{asset('admin/images/avatar-1.png')}}" alt="TooltipStylesInspiration"/>
-
+                         <img src="<?php echo e(asset('admin/images/avatar-1.png')); ?>" alt="TooltipStylesInspiration"/>
+                         
                            <h3>Tooltip Styles Inspiration</h3>
                         </a>
                         <a class="dummy-media-object" href="#!">
@@ -196,4 +194,4 @@
                <!-- search end -->
             </div>
          </nav>
-      </header>
+      </header><?php /**PATH D:\ecommerce_pro\resources\views/admin/navbar.blade.php ENDPATH**/ ?>

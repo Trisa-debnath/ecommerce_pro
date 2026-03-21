@@ -39,7 +39,7 @@ class SubCategoryController extends Controller
              'slug' => Str::slug($request->name),
         ]);
 
-        return redirect()->route('admin.subcategory.manage')->with('success', 'Sub-Category Created!');
+    return redirect()->route('admin.subcategory.manage')->with('success', 'Sub-Category Created!');
     }
 
     public function edit($id)

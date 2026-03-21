@@ -5,6 +5,7 @@ use App\Models\Product;
 use Livewire\Attributes\Layout;
 
 new #[Layout('home.shop_layout')]
+#[Middleware('auth')]
 class extends Component {
 
     public $product;
@@ -36,15 +37,49 @@ class extends Component {
         // Ekhane apnar cart logic thakbe
         // Udahoron: Cart::add($this->product->id, $this->product->name, $this->quantity, $this->product->discount_price);
 
+//  Session theke purono cart data ana (jodi thake), na thakle khali array []
+    $cart = session()->get('cart', []);
+
+    //  Product-ti ki agei cart-e ache?
+    if(isset($cart[$this->product->id])) {
+        // Jodi thake, tobe shudhu quantity bariye deya
+        $cart[$this->product->id]['quantity'] += $this->quantity;
+    } else {
+        //  Jodi na thake, tobe nuton kore add kora
+        $cart[$this->product->id] = [
+            "id" => $this->product->id,
+            "name" => $this->product->name,
+            "quantity" => $this->quantity,
+            "price" => $this->product->discount_price, // Model Accessor theke asche
+            "image" => $this->product->image
+        ];
+    }
+
+    //  Update kora cart-ti session-e save kora
+    session()->put('cart', $cart);
+
+    //  Header-ke janano je cart update hoyeche (jate cart count barta pare)
+    // Dispatch event for SweetAlert popup
+    $this->dispatch('swal:modal', [
+        'type'  => 'success',
+        'title' => 'Added Successfully!',
+        'text'  => 'Product added to your shopping cart.',
+        'icon'  => 'success'
+    ]);
+
+    $this->dispatch('cartUpdated');
+
         session()->flash('success', 'Product added to cart successfully!');
     }
 }; ?>
 
 <div class="py-12 bg-gray-50">
-    <section class="product_section layout_padding">
-    <div class="container">
-        <div class="row bg-white p-4 shadow-sm rounded">
 
+    <div class="container">
+        <div class="font-weight-bold mb-3" style="font-size:2.6rem;
+         color: #002c3e; mb-3 ml-3;">
+                 {{ $product->name }} Details </div>
+        <div class="row bg-white p-4 shadow-sm rounded">
             <div class="col-md-6 d-flex align-items-center justify-center">
                 <div class="img-box p-3 border rounded w-100 text-center bg-light">
                     <img src="{{ asset('uploads/products/' . $product->image) }}"
@@ -127,4 +162,4 @@ class extends Component {
 
         </div>
     </div>
-</section></div>
+</div>

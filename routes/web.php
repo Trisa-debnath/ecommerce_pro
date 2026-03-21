@@ -15,7 +15,17 @@ Route::controller(HomeMainController::class)->group(function () {
 });
 
 Volt::route('/product/{id}', 'home.product-details')->name('product.details');
+Volt::route('/cart', 'home.cart-page')->middleware('auth')->name('cart');
 
+
+
+Route::middleware(['auth'])->group(function () {
+    Volt::route('/checkout', 'home.checkout')->name('checkout');
+    //
+    Route::get('/order-success/{order_id}', function($order_id) {
+        return "Order Placed Successfully! Order ID: " . $order_id;
+    })->name('order.success');
+});
 
 
 

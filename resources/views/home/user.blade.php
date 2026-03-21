@@ -10,16 +10,17 @@
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
-      <link rel="shortcut icon" href="home/images/favicon.png" type="">
-      <title>Famms - Fashion HTML Template</title>
+
+        <link rel="icon" type="image/png" href="{{ asset('home/images/favi.png') }}">
+      <title>Trisa's electronic shop</title>
       <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
+      <link rel="stylesheet" type="text/css" href="{{ asset('home/css/bootstrap.css')}}" />
       <!-- font awesome style -->
-      <link href="home/css/font-awesome.min.css" rel="stylesheet" />
+      <link href="{{asset('home/css/font-awesome.min.css')}}" rel="stylesheet" />
       <!-- Custom styles for this template -->
-      <link href="home/css/style.css" rel="stylesheet" />
+      <link href="{{asset('home/css/style.css')}}" rel="stylesheet" />
       <!-- responsive style -->
-      <link href="home/css/responsive.css" rel="stylesheet" />
+      <link href="{{asset('home/css/responsive.css')}}" rel="stylesheet" />
 
       @livewireStyles
    </head>
@@ -65,7 +66,7 @@
       <!-- footer start -->
      @include('home.footer')
       <!-- footer end -->
-      
+
       <!-- jQery -->
       <script src="js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->
@@ -75,6 +76,25 @@
       <!-- custom js -->
       <script src="home/js/custom.js"></script>
 
+      <!-- start sweet alart -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    window.addEventListener('swal:modal', event => {
+        Swal.fire({
+            title: event.detail[0].title,
+            text: event.detail[0].text,
+            icon: event.detail[0].icon,
+            timer: 2000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end',
+            timerProgressBar: true
+        });
+    });
+</script>
+<!-- end sweet alart code-->
 
       @livewireScripts
    </body>
