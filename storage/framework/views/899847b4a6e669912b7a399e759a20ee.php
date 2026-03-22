@@ -1,5 +1,6 @@
      <header class="main-header-top hidden-print">
-         <a href="index.html" class="logo"><img class="img-fluid able-logo" src="<?php echo e(asset('admin/images/logo.png')); ?>" alt="Theme-logo"></a>
+         <a href="index.html" class="logo"><img class="img-fluid able-logo"
+            src="<?php echo e(asset('admin/images/logo.png')); ?>" alt="Theme-logo"></a>
          <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
             <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
@@ -8,7 +9,7 @@
                   <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
                      <i class="ti-files"> </i><span> Files</span>
                   </a>
-               </li>               
+               </li>
                <li class="dropdown">
                   <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
                      <span>Dropdown </span><i class=" icofont icofont-simple-down"></i>
@@ -37,7 +38,7 @@
 
                <ul class="top-nav">
                   <!--Notification Menu-->
-                    
+
                   <li class="dropdown notification-menu">
                      <a href="#!" data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
                         <i class="icon-bell"></i>
@@ -65,7 +66,8 @@
                            <a href="javascript:;" class="media"><span class="media-left media-icon">
                     <img class="img-circle" src="<?php echo e(asset('admin/images/avatar-3.png')); ?>" alt="User Image">
                   </span>
-                                    <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block-time">3 hours ago</span></div></a>
+                                    <div class="media-body"><span class="block">Transaction xyz complete</span>
+            <span class="text-muted block-time">3 hours ago</span></div></a>
                         </li>
                         <li class="not-footer">
                            <a href="#!">See all notifications.</a>
@@ -137,7 +139,7 @@
 
 
                   </li>
-                    
+
 
                </ul>
 
@@ -179,7 +181,7 @@
                         <h2>Recent</h2>
                         <a class="dummy-media-object" href="#!">
                          <img src="<?php echo e(asset('admin/images/avatar-1.png')); ?>" alt="TooltipStylesInspiration"/>
-                         
+
                            <h3>Tooltip Styles Inspiration</h3>
                         </a>
                         <a class="dummy-media-object" href="#!">
@@ -194,4 +196,5 @@
                <!-- search end -->
             </div>
          </nav>
-      </header><?php /**PATH D:\ecommerce_pro\resources\views/admin/navbar.blade.php ENDPATH**/ ?>
+      </header>
+<?php /**PATH D:\ecommerce_pro\resources\views/admin/navbar.blade.php ENDPATH**/ ?>

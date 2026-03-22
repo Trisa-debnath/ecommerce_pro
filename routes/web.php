@@ -3,6 +3,8 @@
 use App\Http\Controllers\admin\AdminMainController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SubCategoryController;
+use App\Http\Controllers\admin\OrderController;
+
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\home\HomeMainController;
 use App\Http\Controllers\ProfileController;
@@ -83,6 +85,12 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
             Route::delete('/product/{id}', 'destroy')->name('admin.product.delete');
 
         });
+
+        Route::controller(OrderController::class)->group(function () {
+        Route::get('/orders', 'index')->name('admin.orders');
+        Route::get('/orders/{id}', 'show')->name('admin.orders.show');
+        Route::post('/orders/update-status/{id}', 'updateStatus')->name('admin.orders.update');
+    });
 
     });
 });

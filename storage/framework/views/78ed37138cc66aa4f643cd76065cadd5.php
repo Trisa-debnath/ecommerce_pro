@@ -47,6 +47,17 @@
         </li>
 
 
+         <li class="treeview"><a class="waves-effect waves-dark" href="#!">
+                    <i class="icon-briefcase"></i><span> Order</span>
+                    <i class="icon-arrow-down"></i></a>
+                      <ul class="treeview-menu">
+<li><a class="waves-effect waves-dark" href="<?php echo e(route('admin.orders')); ?>">
+    <i class="icon-arrow-right"></i>Manage Order</a></li>
+                       
+         </ul>
+        </li>
+
+
                 <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-chart"></i><span> Charts &amp; Maps</span><span class="label label-success menu-caption">New</span><i class="icon-arrow-down"></i></a>
                     <ul class="treeview-menu">
                         <li><a class="waves-effect waves-dark" href="float-chart.html"><i class="icon-arrow-right"></i> Float Charts</a></li>
