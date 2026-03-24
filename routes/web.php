@@ -14,9 +14,15 @@ use Livewire\Volt\Volt;
 // home
 Route::controller(HomeMainController::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
+    Route::get('/subcategory/{id}/products', 'subcategoryProducts')
+    ->name('subcategory.products');
+
 });
+Route::view('/about', 'home.about')->name('about');
+Route::view('/testimonial', 'home.testimonial')->name('testimonial');
 
 Volt::route('/product/{id}', 'home.product-details')->name('product.details');
+//Volt::route('/products', 'home.product')->name('home.products');
 Volt::route('/cart', 'home.cart-page')->middleware('auth')->name('cart');
 
 
@@ -46,7 +52,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'rolemanager:user'])->name('dashboard');
 // admin
-//Route::middleware(['auth', 'verified', 'rolemanager:admin', 'throttle:login'])
 Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () {
     Route::prefix('admin')->group(function () {
 

@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 ?>
 
 <div>
-    <section class="product_section layout_padding">
+    <section id="our_products" class="product_section layout_padding">
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>Our <span>Products</span></h2>

@@ -22,6 +22,8 @@
       <!-- responsive style -->
       <link href="<?php echo e(asset('home/css/responsive.css')); ?>" rel="stylesheet" />
 
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
       <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::styles(); ?>
 
    </head>
