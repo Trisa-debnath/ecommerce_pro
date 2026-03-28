@@ -2,8 +2,7 @@
 
 use Livewire\Volt\Component;
 use Livewire\Attributes\Layout;
-
-new #[Layout('home.shop_layout')]
+new #[Layout('components.home.shop_layout')]
 #[Middleware('auth')]
 class extends Component {
 

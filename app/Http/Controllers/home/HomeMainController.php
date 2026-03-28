@@ -40,11 +40,14 @@ public function subcategoryProducts($id)
 
     $subcategory = Subcategory::with('products')->findOrFail($id);
     $products = $subcategory->products()->paginate(12);
-
-
     $categories = Category::all();
 
     return view('home.subcategory_view', compact('subcategory', 'products', 'categories'));
+}
+
+public function about() {
+
+    return view('home.about');
 }
 
 

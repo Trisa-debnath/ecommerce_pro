@@ -4,8 +4,8 @@ use Livewire\Volt\Component;
 use App\Models\Product;
 use Livewire\Attributes\Layout;
 
-new #[Layout('home.shop_layout')]
-#[Middleware('auth')]
+new #[Layout('components.home.shop_layout')]
+
 class extends Component {
 
     public $product;
@@ -13,7 +13,7 @@ class extends Component {
 
     public function mount($id)
     {
-        // Product load kora ebong sathe relations gulo ana
+        // Product load
         $this->product = Product::with(['category', 'subcategory'])->findOrFail($id);
     }
 
@@ -34,9 +34,6 @@ class extends Component {
 
     public function addToCart()
     {
-        // Ekhane apnar cart logic thakbe
-        // Udahoron: Cart::add($this->product->id, $this->product->name, $this->quantity, $this->product->discount_price);
-
 //  Session theke purono cart data ana (jodi thake), na thakle khali array []
     $cart = session()->get('cart', []);
 
@@ -50,7 +47,7 @@ class extends Component {
             "id" => $this->product->id,
             "name" => $this->product->name,
             "quantity" => $this->quantity,
-            "price" => $this->product->discount_price, // Model Accessor theke asche
+            "price" => $this->product->discount_price,
             "image" => $this->product->image
         ];
     }
@@ -58,7 +55,7 @@ class extends Component {
     //  Update kora cart-ti session-e save kora
     session()->put('cart', $cart);
 
-    //  Header-ke janano je cart update hoyeche (jate cart count barta pare)
+    //  Header-ke janano je cart update hoyeche
     // Dispatch event for SweetAlert popup
     $this->dispatch('swal:modal', [
         'type'  => 'success',
@@ -114,7 +111,8 @@ class extends Component {
                             </h3>
                             <span class="badge badge-danger px-2 py-1 mt-1">{{ $product->discount_percent }}% OFF</span>
                         @else
-                            <h3 class="text-danger font-weight-bold mb-0">${{ number_format($product->price, 2) }}</h3>
+                            <h3 class="text-danger font-weight-bold mb-0">
+                                ${{ number_format($product->price, 2) }}</h3>
                         @endif
                     </div>
 

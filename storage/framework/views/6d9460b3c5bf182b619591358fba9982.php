@@ -3,7 +3,7 @@
             <div class="container">
                <nav class="navbar navbar-expand-lg custom_nav-container ">
                   <a class="navbar-brand" href="<?php echo e(route('home.index')); ?>"><img width="250"
-                     src="home/images/logo.png" alt="#" /></a>
+                     src="<?php echo e(asset('home/images/logo.png')); ?>" alt="#" /></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class=""> </span>
                   </button>
@@ -14,15 +14,13 @@
              <li class="nav-item <?php echo e(request()->routeIs('home.index') ? 'active' : ''); ?>">
         <a class="nav-link" href="<?php echo e(route('home.index')); ?>">Home</a>
     </li>
-                     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-            <span class="nav-label">Pages <span class="caret"></span></span>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a href="<?php echo e(route('about')); ?>">About</a></li>
-            <li><a href="<?php echo e(route('testimonial')); ?>">Testimonial</a></li>
-        </ul>
+                <li class="nav-item <?php echo e(request()->routeIs('about') ? 'active' : ''); ?>">
+        <a class="nav-link" href="<?php echo e(route('about')); ?>">About</a>
     </li>
+    <li class="nav-item <?php echo e(request()->routeIs('testimonial') ? 'active' : ''); ?>">
+        <a class="nav-link" href="<?php echo e(route('testimonial')); ?>">Testimonial</a>
+    </li>
+
                        <li class="nav-item <?php echo e(request()->routeIs('home.products') ? 'active' : ''); ?>">
         <a class="nav-link" href="<?php echo e(route('home.index')); ?>#our_products">Products</a>
     </li>

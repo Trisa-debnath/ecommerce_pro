@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Subcategory;
+
+
 use App\Http\Controllers\admin\AdminMainController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SubCategoryController;
@@ -10,16 +13,17 @@ use App\Http\Controllers\home\HomeMainController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-
 // home
 Route::controller(HomeMainController::class)->group(function () {
     Route::get('/', 'index')->name('home.index');
     Route::get('/subcategory/{id}/products', 'subcategoryProducts')
     ->name('subcategory.products');
-
+Route::get('/about','about')->name('about');
 });
-Route::view('/about', 'home.about')->name('about');
-Route::view('/testimonial', 'home.testimonial')->name('testimonial');
+
+Volt::route('/testimonial', 'home.testimonial')->name('testimonial');
+Volt::route('/new-arrivals', 'home.new-arrivals')->name('new.arrivals');
+
 
 Volt::route('/product/{id}', 'home.product-details')->name('product.details');
 //Volt::route('/products', 'home.product')->name('home.products');

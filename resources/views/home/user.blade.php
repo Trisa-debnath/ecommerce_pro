@@ -1,103 +1,17 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <!-- Basic -->
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <!-- Mobile Metas -->
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <!-- Site Metas -->
-      <meta name="keywords" content="" />
-      <meta name="description" content="" />
-      <meta name="author" content="" />
+<x-home.shop_layout>
 
-        <link rel="icon" type="image/png" href="{{ asset('home/images/favi.png') }}">
-      <title>Trisa's electronic shop</title>
-      <!-- bootstrap core css -->
-      <link rel="stylesheet" type="text/css" href="{{ asset('home/css/bootstrap.css')}}" />
-      <!-- font awesome style -->
-      <link href="{{asset('home/css/font-awesome.min.css')}}" rel="stylesheet" />
-      <!-- Custom styles for this template -->
-      <link href="{{asset('home/css/style.css')}}" rel="stylesheet" />
-      <!-- responsive style -->
-      <link href="{{asset('home/css/responsive.css')}}" rel="stylesheet" />
+    @include('home.slider')
 
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-      @livewireStyles
-   </head>
-
-   <body>
+    @include('home.why')
 
 
+    <livewire:home.new-arrivals />
 
-      <div class="hero_area">
-         <!-- header section strats -->
-         <livewire:home.header />
-         <!-- end header section -->
+    <livewire:home.product />
 
+    @include('home.subscribe')
 
-   <main>
-    {{ $slot ?? '' }}
-</main>
+  <livewire:home.testimonial />
 
 
-         <!-- slider section -->
-        @include('home.slider')
-         <!-- end slider section -->
-      </div>
-      <!-- why section -->
-     @include('home.why')
-      <!-- end why section -->
-
-      <!-- arrival section -->
-      @include('home.arrival')
-      <!-- end arrival section -->
-
-      <!-- product section -->
-     <livewire:home.product />
-
-      <!-- end product section -->
-
-      <!-- subscribe section -->
-      @include('home.subscribe')
-      <!-- end subscribe section -->
-      <!-- client section -->
-     @include('home.client')
-      <!-- end client section -->
-      <!-- footer start -->
-     @include('home.footer')
-      <!-- footer end -->
-
-      <!-- jQery -->
-      <script src="js/jquery-3.4.1.min.js"></script>
-      <!-- popper js -->
-      <script src="home/js/popper.min.js"></script>
-      <!-- bootstrap js -->
-      <script src="home/js/bootstrap.js"></script>
-      <!-- custom js -->
-      <script src="home/js/custom.js"></script>
-
-      <!-- start sweet alart -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-
-    window.addEventListener('swal:modal', event => {
-        Swal.fire({
-            title: event.detail[0].title,
-            text: event.detail[0].text,
-            icon: event.detail[0].icon,
-            timer: 2000,
-            showConfirmButton: false,
-            toast: true,
-            position: 'top-end',
-            timerProgressBar: true
-        });
-    });
-</script>
-<!-- end sweet alart code-->
-
-      @livewireScripts
-   </body>
-</html>
+</x-home.shop_layout>

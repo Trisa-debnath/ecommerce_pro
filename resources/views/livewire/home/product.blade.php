@@ -32,6 +32,7 @@ new class extends Component {
         ];
     }
 
+
 public function addToCart($id)
 {
     $product = Product::findOrFail($id);
@@ -139,7 +140,8 @@ public function addToCart($id)
                 @empty
                 <div class="col-12 text-center py-5">
                     <img src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png" width="100" alt="No Product">
-                    <h4 class="mt-3 text-muted">No products found matching your search.</h4>
+                    <h4 class="mt-3 text-muted">No products found matching your search.
+                    </h4>
                 </div>
                 @endforelse
             </div>

@@ -50,7 +50,8 @@ use Livewire\Attributes\Layout;
                             </h3>
                             <span class="badge badge-danger px-2 py-1 mt-1"><?php echo e($product->discount_percent); ?>% OFF</span>
                         <?php else: ?>
-                            <h3 class="text-danger font-weight-bold mb-0">$<?php echo e(number_format($product->price, 2)); ?></h3>
+                            <h3 class="text-danger font-weight-bold mb-0">
+                                $<?php echo e(number_format($product->price, 2)); ?></h3>
                         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                     </div>
 

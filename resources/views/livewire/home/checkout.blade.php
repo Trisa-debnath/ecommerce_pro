@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 
-new #[Layout('home.shop_layout')]
+new #[Layout('components.home.shop_layout')]
+#[Middleware('auth')]
 class extends Component {
     public $name = '';
     public $email = '';
@@ -25,21 +26,26 @@ class extends Component {
         $this->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'phone' => 'required',
+            'phone' => 'required|numeric|digits_between:10,15'
             'address' => 'required',
             'city' => 'required',
         ]);
 
         $cart = session()->get('cart', []);
-        if(empty($cart)) {
-            session()->flash('error', 'Your cart is empty!');
-            return;
+    if(empty($cart)) {
+        $this->dispatch('swal:modal',
+        ['type' => 'error',
+            'title' => 'Oops!',
+            'text' => 'Your cart is empty!',
+            'icon' => 'error'
+        ]);
+        return;
         }
 
         $total = 0;
-        foreach($cart as $item) {
-            $total += $item['price'] * $item['quantity'];
-        }
+    foreach($cart as $item) {
+        $total += (float)$item['price'] * (int)$item['quantity'];
+    }
 
         $order = Order::create([
             'user_id' => Auth::id(),
@@ -51,6 +57,7 @@ class extends Component {
             'city' => $this->city,
             'total_amount' => $total,
             'payment_method' => $this->payment_method,
+            'status' => 'pending',
         ]);
 
         foreach($cart as $id => $item) {
@@ -60,9 +67,11 @@ class extends Component {
                 'quantity' => $item['quantity'],
                 'price' => $item['price'],
             ]);
+            Product::find($id)->decrement('quantity', $item['quantity']);
         }
 
         session()->forget('cart');
+        $this->dispatch('cartUpdated');
         return redirect()->route('order.success', $order->id);
     }
 }; ?>

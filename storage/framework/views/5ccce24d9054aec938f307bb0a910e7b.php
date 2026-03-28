@@ -110,62 +110,15 @@
     </div>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
+<div class="d-flex justify-content-end align-items-center mb-3">
+    <a href="<?php echo e(route('new.arrivals')); ?>" class="btn btn-outline-danger btn-sm px-4 rounded-pill">
+        See All <i class="fa fa-arrow-right ml-1"></i>
+    </a>
+</div>
+
 </div>
 
 
-<section class="product_section layout_padding mt-5">
-    <div class="container">
-        <div class="heading_container heading_center mb-4">
-            <h2 class="section-title">Our <span>Products</span></h2>
-        </div>
-
-        
-        <form action="<?php echo e(url()->current()); ?>" method="GET" class="row mb-5 py-3 shadow-sm bg-white rounded align-items-center border mx-0">
-            <div class="col-md-5 mb-2 mb-md-0">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white border-right-0"><i class="fa fa-search text-muted"></i></span>
-                    </div>
-                    <input type="text" name="search" value="<?php echo e(request('search')); ?>" class="form-control border-left-0" placeholder="Search products...">
-                </div>
-            </div>
-            <div class="col-md-4 mb-2 mb-md-0">
-                <select name="category_id" class="form-control" onchange="this.form.submit()">
-                    <option value="">All Categories</option>
-                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
-                        <option value="<?php echo e($cat->id); ?>" <?php echo e(request('category_id') == $cat->id ? 'selected' : ''); ?>><?php echo e($cat->name); ?></option>
-                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
-                </select>
-            </div>
-            <div class="col-md-3 text-md-right text-center">
-                <button type="submit" class="btn btn-danger px-4">Filter Now</button>
-            </div>
-        </form>
-
-        <div class="row">
-            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <div class="arrival-card shadow-sm h-100">
-                        <img src="<?php echo e(asset('uploads/products/' . $product->image)); ?>" class="img-fluid mb-3" onerror="this.src='https://via.placeholder.com/150'">
-                        <h6 class="font-weight-bold text-truncate"><?php echo e($product->name); ?></h6>
-                        <p class="text-danger font-weight-bold">$<?php echo e(number_format($product->discount_price ?? $product->price)); ?></p>
-                        <a href="<?php echo e(route('product.details', $product->id)); ?>" class="btn btn-sm btn-outline-dark px-4 rounded-pill">Details</a>
-                    </div>
-                </div>
-            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
-                <div class="col-12 text-center py-5">
-                    <img src="https://via.placeholder.com/150?text=No+Products" class="mb-3">
-                    <h4>No products found!</h4>
-                </div>
-            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-        </div>
-
-        <div class="d-flex justify-content-center mt-5">
-            <?php echo e($products->appends(request()->query())->links()); ?>
-
-        </div>
-    </div>
-</section>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
