@@ -53,7 +53,27 @@
                       <ul class="treeview-menu">
 <li><a class="waves-effect waves-dark" href="<?php echo e(route('admin.orders')); ?>">
     <i class="icon-arrow-right"></i>Manage Order</a></li>
-                       
+
+         </ul>
+        </li>
+
+
+                 <li class="treeview"><a class="waves-effect waves-dark" href="#!">
+                    <i class="icon-briefcase"></i><span> Testimonial</span>
+                    <i class="icon-arrow-down"></i></a>
+                      <ul class="treeview-menu">
+
+                  <li>
+                    <a href="<?php echo e(route('testimonials.index')); ?>">
+                <i class="icon-arrow-right"></i> Manage Testimonial
+            </a>
+         </li>
+             <li>
+                 <a class="waves-effect waves-dark" href="<?php echo e(route('testimonials.create')); ?>">
+
+    <i class="icon-arrow-right"></i>create testimonial</a>
+
+        </li>
          </ul>
         </li>
 

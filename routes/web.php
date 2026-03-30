@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\AdminMainController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SubCategoryController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\TestimonialController;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\home\HomeMainController;
@@ -100,6 +101,15 @@ Route::middleware(['auth', 'verified', 'rolemanager:admin'])->group(function () 
         Route::get('/orders/{id}', 'show')->name('admin.orders.show');
         Route::post('/orders/update-status/{id}', 'updateStatus')->name('admin.orders.update');
     });
+
+Route::controller(TestimonialController::class)->group(function () {
+    Route::get('/testimonials', 'index')->name('testimonials.index');
+    Route::get('/testimonials/create', 'create')->name('testimonials.create');
+    Route::post('/testimonials/store', 'store')->name('testimonials.store');
+     Route::delete('/testimonials/{id}', 'destroy')->name('testimonials.delete');
+});
+
+
 
     });
 });
