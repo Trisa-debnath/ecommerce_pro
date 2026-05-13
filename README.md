@@ -12,7 +12,12 @@ This project was built by **Trisa Debnath** as a complete ecommerce management s
 ![Product Details](screenshots/product-details.png)
 ![Cart Page](screenshots/cart-page.png)
 ![Checkout Page](screenshots/checkout-page.png)
-
+![Checkout Page](screenshots/checkout-page1.png)
+![Admin Dashboard](screenshots/admin.png)
+![Admin Dashboard](screenshots/dashboard1.png)
+![Admin Dashboard](screenshots/dashboard2.png)
+![Product Management](screenshots/product-management.png)
+![Order Management](screenshots/order-management.png)
 
 ## Features
 
