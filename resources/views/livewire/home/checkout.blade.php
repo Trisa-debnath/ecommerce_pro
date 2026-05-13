@@ -3,9 +3,11 @@
 use Livewire\Volt\Component;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Middleware;
 
 new #[Layout('components.home.shop_layout')]
 #[Middleware('auth')]
@@ -26,7 +28,7 @@ class extends Component {
         $this->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'phone' => 'required|numeric|digits_between:10,15'
+            'phone' => 'required|numeric|digits_between:10,15',
             'address' => 'required',
             'city' => 'required',
         ]);
@@ -57,7 +59,7 @@ class extends Component {
             'city' => $this->city,
             'total_amount' => $total,
             'payment_method' => $this->payment_method,
-            'status' => 'pending',
+            'order_status' => 'pending',
         ]);
 
         foreach($cart as $id => $item) {

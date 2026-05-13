@@ -1,1 +1,0 @@
-<?php /**PATH D:\ecommerce_pro\resources\views\livewire/home/product_details.blade.php ENDPATH**/ ?>

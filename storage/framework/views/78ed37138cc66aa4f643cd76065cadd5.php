@@ -1,7 +1,7 @@
 <ul class="sidebar-menu">
                 <li class="nav-level">--- Navigation</li>
                 <li class="active treeview">
-                    <a class="waves-effect waves-dark" href="index.html">
+                    <a class="waves-effect waves-dark" href="<?php echo e(route('admin.dashboard')); ?>">
                         <i class="icon-speedometer"></i><span> Dashboard</span>
                     </a>
                 </li>

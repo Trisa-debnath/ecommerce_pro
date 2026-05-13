@@ -1,1 +1,0 @@
-<?php /**PATH D:\ecommerce_pro\resources\views/home/client.blade.php ENDPATH**/ ?>

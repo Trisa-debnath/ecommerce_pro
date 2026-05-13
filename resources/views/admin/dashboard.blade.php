@@ -83,13 +83,13 @@
 
 
         <footer class="admin-footer">
-            &copy; {{ date('Y') }} <strong>MyAdminPanel</strong>. All Rights Reserved.
+            &copy; {{ date('Y') }} <strong>Ecommerce Pro Admin</strong>. All Rights Reserved.
         </footer>
 
-        <!-- Fixed button -->
+        <!-- Store shortcut -->
         <div class="fixed-button">
-            <a href="#!" class="btn btn-md btn-primary">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
+            <a href="{{ route('home.index') }}" class="btn btn-md btn-primary" target="_blank">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> View Store
             </a>
         </div>
     </div>
